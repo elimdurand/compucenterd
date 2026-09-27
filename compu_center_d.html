@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="COMPU CENTER “D” - Soporte técnico para laptops y computadoras. Mantenimiento, repotenciación, formateo, instalación de programas, antivirus y asistencia remota.">
+  <meta name="theme-color" content="#08111f">
+  <title>COMPU CENTER “D” | Tecnología y Servicios</title>
+  <style>
+    :root{
+      --bg:#050a12;
+      --bg2:#08111f;
+      --card:#0c1727;
+      --card2:#101e31;
+      --text:#eef6ff;
+      --muted:#9eb0c5;
+      --primary:#18b6ff;
+      --primary2:#006dff;
+      --accent:#00e5ff;
+      --line:rgba(255,255,255,.09);
+      --success:#25d366;
+      --shadow:0 18px 50px rgba(0,0,0,.35);
+    }
+    *{box-sizing:border-box;margin:0;padding:0}
+    html{scroll-behavior:smooth}
+    body{
+      font-family:Inter,Segoe UI,Roboto,Arial,sans-serif;
+      background:
+        radial-gradient(circle at 80% 10%,rgba(0,174,255,.13),transparent 30%),
+        radial-gradient(circle at 10% 35%,rgba(0,91,255,.08),transparent 30%),
+        var(--bg);
+      color:var(--text);
+      line-height:1.6;
+    }
+    a{text-decoration:none;color:inherit}
+    .container{width:min(1120px,92%);margin:auto}
+    header{
+      position:fixed;top:0;left:0;right:0;z-index:1000;
+      background:rgba(5,10,18,.82);
+      backdrop-filter:blur(14px);
+      border-bottom:1px solid var(--line);
+    }
+    nav{height:74px;display:flex;align-items:center;justify-content:space-between}
+    .brand{display:flex;align-items:center;gap:12px;font-weight:900;letter-spacing:.5px}
+    .logo{
+      width:43px;height:43px;border-radius:12px;
+      display:grid;place-items:center;
+      background:linear-gradient(135deg,var(--primary2),var(--accent));
+      color:#00111c;font-weight:1000;
+      box-shadow:0 0 25px rgba(24,182,255,.28);
+    }
+    .brand span{font-size:1.08rem}
+    .brand small{display:block;color:var(--muted);font-size:.68rem;font-weight:600;letter-spacing:1.4px}
+    .nav-links{display:flex;gap:24px;align-items:center}
+    .nav-links a{font-size:.92rem;color:#c9d7e7;transition:.25s}
+    .nav-links a:hover{color:var(--accent)}
+    .nav-cta{
+      padding:10px 16px;border-radius:10px;
+      background:var(--primary);color:#00121c!important;font-weight:800;
+    }
+    .menu{display:none;background:none;border:0;color:white;font-size:1.7rem}
+
+    .hero{padding:150px 0 95px;min-height:760px;display:grid;place-items:center}
+    .hero-grid{display:grid;grid-template-columns:1.08fr .92fr;gap:55px;align-items:center}
+    .eyebrow{
+      display:inline-flex;gap:8px;align-items:center;
+      color:var(--accent);font-size:.78rem;font-weight:800;
+      text-transform:uppercase;letter-spacing:2px;margin-bottom:18px
+    }
+    .dot{width:8px;height:8px;border-radius:50%;background:var(--accent);box-shadow:0 0 15px var(--accent)}
+    h1{font-size:clamp(2.5rem,6vw,5.1rem);line-height:1.02;letter-spacing:-3px;margin-bottom:22px}
+    h1 span{background:linear-gradient(90deg,#fff,var(--accent),#2d8cff);-webkit-background-clip:text;background-clip:text;color:transparent}
+    .hero p{font-size:1.1rem;color:var(--muted);max-width:650px}
+    .actions{display:flex;flex-wrap:wrap;gap:12px;margin-top:32px}
+    .btn{
+      display:inline-flex;align-items:center;justify-content:center;gap:9px;
+      padding:14px 21px;border-radius:12px;font-weight:800;border:1px solid var(--line);
+      transition:transform .2s,box-shadow .2s,background .2s
+    }
+    .btn:hover{transform:translateY(-2px)}
+    .btn-primary{background:linear-gradient(135deg,var(--primary),var(--primary2));color:white;box-shadow:0 12px 30px rgba(0,109,255,.22)}
+    .btn-whatsapp{background:rgba(37,211,102,.1);border-color:rgba(37,211,102,.3);color:#8ff5b1}
+    .btn-ghost{background:rgba(255,255,255,.03);color:#dce8f5}
+
+    .hero-visual{position:relative}
+    .tech-card{
+      min-height:420px;border:1px solid var(--line);border-radius:28px;
+      background:linear-gradient(145deg,rgba(15,34,55,.94),rgba(5,13,24,.94));
+      box-shadow:var(--shadow);overflow:hidden;position:relative;
+      display:grid;place-items:center;
+    }
+    .tech-card:before{
+      content:"";position:absolute;inset:-40%;
+      background:conic-gradient(from 90deg,transparent,rgba(0,229,255,.12),transparent 25%);
+      animation:spin 9s linear infinite;
+    }
+    .screen{
+      position:relative;width:74%;aspect-ratio:16/10;border:2px solid #2b9bff;
+      border-radius:15px;background:#06101c;box-shadow:0 0 45px rgba(0,174,255,.22);
+      padding:18px;
+    }
+    .screen:after{content:"";position:absolute;left:50%;bottom:-17px;transform:translateX(-50%);width:48%;height:13px;border-radius:0 0 9px 9px;background:#24364a}
+    .terminal{font-family:Consolas,monospace;color:#72e7ff;font-size:.78rem;line-height:2}
+    .terminal b{color:#fff}.bar{height:7px;border-radius:99px;background:#10293f;margin:9px 0}.bar i{display:block;height:100%;width:76%;background:linear-gradient(90deg,var(--primary2),var(--accent));border-radius:inherit}
+    .float{position:absolute;background:rgba(10,26,43,.94);border:1px solid var(--line);padding:12px 16px;border-radius:13px;box-shadow:var(--shadow);font-size:.85rem;font-weight:800}
+    .f1{top:10%;left:-4%}.f2{right:-4%;bottom:15%}.f3{left:9%;bottom:5%;color:#8ff5b1}
+
+    section{padding:95px 0}
+    .section-head{text-align:center;max-width:700px;margin:0 auto 48px}
+    .section-head .tag{color:var(--accent);font-size:.75rem;text-transform:uppercase;letter-spacing:2px;font-weight:900}
+    h2{font-size:clamp(2rem,4vw,3.2rem);line-height:1.1;margin:10px 0 15px}
+    .section-head p{color:var(--muted)}
+    .services{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+    .service{
+      background:linear-gradient(145deg,var(--card),rgba(8,17,30,.75));
+      border:1px solid var(--line);border-radius:18px;padding:27px;
+      transition:.25s;position:relative;overflow:hidden
+    }
+    .service:hover{transform:translateY(-5px);border-color:rgba(24,182,255,.35);box-shadow:0 15px 40px rgba(0,0,0,.25)}
+    .icon{font-size:2rem;margin-bottom:13px}
+    .service h3{font-size:1.12rem;margin-bottom:10px}
+    .service p,.service li{color:var(--muted);font-size:.9rem}
+    .service ul{list-style:none;display:grid;gap:6px;margin-top:14px}
+    .service li:before{content:"✓";color:var(--accent);font-weight:900;margin-right:8px}
+    .service .quote{display:inline-block;margin-top:18px;color:#9fdfff;font-size:.83rem;font-weight:800}
+
+    .software{display:grid;grid-template-columns:1fr 1fr;gap:22px;margin-top:22px}
+    .software-box{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:27px}
+    .software-box h3{margin-bottom:15px}
+    .chips{display:flex;flex-wrap:wrap;gap:9px}
+    .chip{padding:8px 12px;border:1px solid var(--line);border-radius:999px;background:rgba(255,255,255,.035);color:#cbd9e8;font-size:.82rem}
+    .notice{margin-top:18px;padding:14px 16px;border-left:3px solid var(--accent);background:rgba(0,229,255,.055);color:#aebed0;font-size:.82rem;border-radius:0 10px 10px 0}
+
+    .why{background:linear-gradient(180deg,transparent,rgba(10,29,48,.42),transparent)}
+    .advantages{display:grid;grid-template-columns:repeat(4,1fr);gap:17px}
+    .adv{padding:24px;background:rgba(255,255,255,.025);border:1px solid var(--line);border-radius:16px}
+    .adv strong{display:block;margin-bottom:7px}.adv p{font-size:.88rem;color:var(--muted)}
+
+    .steps{display:grid;grid-template-columns:repeat(5,1fr);gap:12px}
+    .step{padding:22px 18px;border:1px solid var(--line);border-radius:16px;background:var(--card);position:relative}
+    .num{font-size:2rem;font-weight:1000;color:var(--primary);opacity:.75}.step h3{font-size:1rem;margin:5px 0}.step p{font-size:.84rem;color:var(--muted)}
+
+    .contact-wrap{display:grid;grid-template-columns:.9fr 1.1fr;gap:25px}
+    .contact-card,.form-card{background:linear-gradient(145deg,var(--card),rgba(8,17,30,.8));border:1px solid var(--line);border-radius:20px;padding:30px}
+    .contact-items{display:grid;gap:15px;margin-top:25px}
+    .contact-item{display:flex;gap:13px;align-items:flex-start}
+    .contact-item .ci{width:42px;height:42px;display:grid;place-items:center;background:rgba(24,182,255,.09);border:1px solid rgba(24,182,255,.15);border-radius:11px}
+    .contact-item small{color:var(--muted);display:block}
+    form{display:grid;gap:13px}
+    label{font-size:.8rem;color:#aebfd2;font-weight:700}
+    input,textarea,select{
+      width:100%;padding:13px 14px;margin-top:6px;border-radius:10px;border:1px solid var(--line);
+      background:#07111e;color:white;outline:none;font:inherit
+    }
+    input:focus,textarea:focus,select:focus{border-color:var(--primary)}
+    textarea{min-height:125px;resize:vertical}
+    .form-note{font-size:.75rem;color:#71849a}
+
+    footer{padding:30px 0;border-top:1px solid var(--line);background:#03070d}
+    .footer-inner{display:flex;justify-content:space-between;gap:20px;align-items:center}
+    footer p{color:#71849a;font-size:.8rem}
+    .float-wa{
+      position:fixed;right:22px;bottom:22px;z-index:999;
+      width:58px;height:58px;border-radius:50%;display:grid;place-items:center;
+      background:var(--success);color:white;font-size:1.65rem;box-shadow:0 10px 30px rgba(37,211,102,.3);
+      animation:pulse 2s infinite
+    }
+    .back{font-size:.8rem;color:#8ea2b8}
+    @keyframes spin{to{transform:rotate(360deg)}} @keyframes pulse{50%{box-shadow:0 10px 30px rgba(37,211,102,.3),0 0 0 10px rgba(37,211,102,.04)}}
+
+    @media(max-width:900px){
+      .nav-links{display:none}.menu{display:block}
+      .hero-grid,.contact-wrap{grid-template-columns:1fr}.hero{padding-top:125px}
+      .services{grid-template-columns:repeat(2,1fr)}.advantages{grid-template-columns:repeat(2,1fr)}
+      .steps{grid-template-columns:repeat(2,1fr)}.software{grid-template-columns:1fr}
+      .hero-visual{max-width:650px;width:100%;margin:auto}
+    }
+    @media(max-width:600px){
+      nav{height:65px}.brand small{display:none}.brand span{font-size:.95rem}
+      .hero{padding:105px 0 65px;min-height:auto}h1{letter-spacing:-1.7px}
+      section{padding:70px 0}.services,.advantages,.steps{grid-template-columns:1fr}
+      .tech-card{min-height:330px}.screen{width:78%}.float{font-size:.72rem;padding:9px 11px}
+      .f1{left:1%}.f2{right:1%}.f3{left:4%}
+      .footer-inner{flex-direction:column;text-align:center}
+    }
+  </style>
+</head>
+<body>
+<header>
+  <div class="container">
+    <nav>
+      <a class="brand" href="#inicio">
+        <div class="logo">D</div>
+        <div><span>COMPU CENTER </span><small>TECNOLOGÍA Y SERVICIOS</small></div>
+      </a>
+      <div class="nav-links">
+        <a href="#servicios">Servicios</a>
+        <a href="#nosotros">Nosotros</a>
+        <a href="#proceso">Proceso</a>
+        <a href="#contacto">Contacto</a>
+        <a class="nav-cta" href="https://wa.me/51940720188?text=Hola%20COMPU%20CENTER%20%E2%80%9CD%E2%80%9D%2C%20quiero%20solicitar%20un%20servicio." target="_blank">WhatsApp</a>
+      </div>
+      <button class="menu" onclick="alert('Usa el menú de navegación desplazándote por la página.')" aria-label="Menú">☰</button>
+    </nav>
+  </div>
+</header>
+
+<main id="inicio">
+  <section class="hero">
+    <div class="container hero-grid">
+      <div>
+        <div class="eyebrow"><i class="dot"></i> Soporte técnico profesional</div>
+        <h1>Tu equipo.<br><span>En buenas manos.</span></h1>
+        <p>Soluciones informáticas rápidas, confiables y profesionales para mantener tus laptops y computadoras funcionando al máximo.</p>
+        <div class="actions">
+          <a class="btn btn-primary" href="#contacto">⚙ Solicitar servicio</a>
+          <a class="btn btn-whatsapp" href="https://wa.me/51940720188?text=Hola%20COMPU%20CENTER%20%E2%80%9CD%E2%80%9D%2C%20quiero%20consultar%20por%20un%20servicio." target="_blank">◉ WhatsApp</a>
+          <a class="btn btn-ghost" href="#remoto">↗ Asistencia remota</a>
+        </div>
+      </div>
+      <div class="hero-visual">
+        <div class="tech-card">
+          <div class="screen">
+            <div class="terminal">
+              <b>COMPU CENTER “D”</b><br>
+              &gt; diagnóstico iniciado...<br>
+              &gt; rendimiento: <span style="color:#8ff5b1">optimizado</span><br>
+              &gt; seguridad: <span style="color:#8ff5b1">activa</span><br>
+              &gt; sistema: <span style="color:#8ff5b1">estable</span>
+              <div class="bar"><i></i></div>
+              &gt; soporte técnico: <span style="color:#8ff5b1">ONLINE</span>
+            </div>
+          </div>
+          <div class="float f1">⚡ Optimización</div>
+          <div class="float f2">🛡️ Seguridad</div>
+          <div class="float f3">● Atención remota</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="servicios">
+    <div class="container">
+      <div class="section-head">
+        <span class="tag">Servicios</span>
+        <h2>Soluciones para tu equipo</h2>
+        <p>Desde mantenimiento preventivo hasta optimización y soporte remoto.</p>
+      </div>
+      <div class="services">
+        <article class="service">
+          <div class="icon"><img src="IMAGEN/images.jpg" width="290" alt=""></div><h3>Mantenimiento de laptops y PC</h3>
+          <ul>
+            <li>Mantenimiento preventivo</li><li>Limpieza interna</li><li>Limpieza de ventiladores y refrigeración</li>
+            <li>Revisión de componentes</li><li>Diagnóstico de fallas</li><li>Optimización del sistema</li>
+          </ul><a class="quote" href="#contacto">Solicitar cotización →</a>
+        </article>
+        <article class="service">
+          <div class="icon"><img src="IMAGEN/images45.jpg" width="230" alt=""></div><h3>Repotenciación y optimización</h3>
+          <ul>
+            <li>Ampliación de memoria RAM</li><li>Instalación o cambio a SSD</li><li>Optimización de Windows</li>
+            <li>Mejora del rendimiento</li><li>Configuración del sistema</li>
+          </ul><a class="quote" href="#contacto">Solicitar cotización →</a>
+        </article>
+        <article class="service">
+          <div class="icon"><img src="IMAGEN/windows.jpg" width="230" alt=""></div><h3>Formateo e instalación de Windows</h3>
+          <ul>
+            <li>Formateo del equipo</li><li>Instalación de Windows</li><li>Controladores</li>
+            <li>Configuración inicial</li><li>Actualizaciones</li><li>Copia y restauración de información</li>
+          </ul><a class="quote" href="#contacto">Solicitar cotización →</a>
+        </article>
+        <article class="service">
+          <div class="icon"><img src="IMAGEN/progms.jpg" width="190" alt=""></div><h3>Instalación de programas</h3>
+          <p>Instalación y configuración de software según las necesidades del cliente.</p>
+          <ul><li>Ofimática</li><li>Diseño gráfico</li><li>Edición de video y multimedia</li><li>Configuración del sistema</li></ul>
+          <a class="quote" href="#software">Ver programas →</a>
+        </article>
+        <article class="service">
+          <div class="icon"><img src="IMAGEN/antvr.png" width="190"></div><h3>Antivirus y seguridad</h3>
+          <ul>
+            <li>Instalación de antivirus</li><li>Configuración de protección</li><li>Actualización</li>
+            <li>Revisión de amenazas</li><li>Configuración básica de seguridad</li>
+          </ul><a class="quote" href="#contacto">Solicitar cotización →</a>
+        </article>
+        <article class="service" id="remoto">
+          <div class="icon"><img src="IMAGEN/remot.jpg" width="199" alt=""></div><h3>Asistencia técnica remota</h3>
+          <ul>
+            <li>Acceso remoto autorizado</li><li>Configuración de programas</li><li>Solución de errores de software</li>
+            <li>Configuración de Windows</li><li>Diagnóstico de problemas</li><li>Orientación al usuario</li>
+          </ul><a class="quote" href="https://wa.me/51940720188?text=Hola%2C%20necesito%20asistencia%20t%C3%A9cnica%20remota." target="_blank">Solicitar asistencia →</a>
+        </article>
+      </div>
+
+      <div class="software" id="software">
+        <div class="software-box">
+          <h3><img src="IMAGEN/ogf.png" width="100" alt="">MICROSOFT OFFICE</h3><img src="IMAGEN/ohy.png" width="130" alt="">
+          <div class="chips">
+            <span class="chip">ACCESS</span><span class="chip">Word</span><span class="chip">Excel</span>
+            <span class="chip">PowerPoint</span><span class="chip">Outlook</span>
+          </div>
+        </div>
+        <div class="software-box">
+          <h3> PROGRAMAS DE DISEÑO</h3><img src="IMAGEN/ae.png" width="60" alt=""><img src="IMAGEN/cam.png" width="60" alt=""><img src="IMAGEN/pt.png" width="60" alt=""><img src="IMAGEN/pngwing.com (5).png" width="60" alt=""><img src="IMAGEN/pngwing.com (6).png" width="60" alt=""><img src="IMAGEN/pngwing.com (7).png" width="60" alt=""><img src="IMAGEN/fil.png" width="60" alt=""><img src="IMAGEN/aut.png" width="60" alt="">
+          <div class="chips">
+            <span class="chip">Photoshop</span><span class="chip">Illustrator</span><span class="chip">Premiere Pro</span>
+            <span class="chip">After Effects</span><span class="chip">Lightroom</span><span class="chip">CorelDRAW</span>
+            <span class="chip">AutoCAD</span><span class="chip">Filmora</span><span class="chip">Camtasia</span>
+          </div>
+        </div>
+      </div>
+      <div class="notice">ℹ️ La instalación y configuración de software de pago se realiza con una licencia válida proporcionada por el cliente. No se ofrecen activaciones no autorizadas.</div>
+    </div>
+  </section>
+
+  <section class="why" id="nosotros">
+    <div class="container">
+      <div class="section-head">
+        <span class="tag">¿Por qué COMPU CENTER “D”?</span>
+        <h2>Servicio pensado para ti</h2>
+        <p>Atención clara, personalizada y orientada a resolver el problema real de tu equipo.</p>
+      </div>
+      <div class="advantages">
+        <div class="adv"><strong>✓ Atención personalizada</strong><p>Cada equipo se revisa según el problema presentado.</p></div>
+        <div class="adv"><strong>✓ Servicio técnico especializado</strong><p>Soluciones orientadas a computadoras y laptops.</p></div>
+        <div class="adv"><strong>✓ Atención presencial y remota</strong><p>Soporte según la necesidad del cliente.</p></div>
+        <div class="adv"><strong>✓ Transparencia</strong><p>Diagnóstico y explicación antes de ejecutar servicios adicionales.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="proceso">
+    <div class="container">
+      <div class="section-head">
+        <span class="tag">Proceso de atención</span>
+        <h2>Simple, claro y profesional</h2>
+      </div>
+      <div class="steps">
+        <div class="step"><div class="num">01</div><h3>Contacto</h3><p>El cliente explica el problema o servicio que necesita.</p></div>
+        <div class="step"><div class="num">02</div><h3>Diagnóstico</h3><p>Se revisa el equipo y se identifica la causa.</p></div>
+        <div class="step"><div class="num">03</div><h3>Cotización</h3><p>Se informa el servicio y costo correspondiente.</p></div>
+        <div class="step"><div class="num">04</div><h3>Servicio técnico</h3><p>Se realiza el mantenimiento, instalación u optimización.</p></div>
+        <div class="step"><div class="num">05</div><h3>Entrega</h3><p>Se verifica el funcionamiento junto con el cliente.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="contacto">
+    <div class="container">
+      <div class="section-head">
+        <span class="tag">Contacto</span>
+        <h2>¿Necesitas soporte?</h2>
+        <p>Cuéntanos qué necesita tu equipo y solicita una cotización.</p>
+      </div>
+      <div class="contact-wrap">
+        <div class="contact-card">
+          <h3>COMPU CENTER “D”</h3>
+          <p style="color:var(--muted);margin-top:8px">Tecnología y servicios para laptops y computadoras.</p>
+          <div class="contact-items">
+            <div class="contact-item"><div class="ci"><img src="IMAGEN/pngwing.com.png" width="30" alt=""></div><div><small>WhatsApp</small><a href="https://wa.me/51940720188" target="_blank">+51 940 720 188</a></div></div>
+            <div class="contact-item"><div class="ci"><img src="IMAGEN/pngwing.com (1).png" width="30" alt=""></div><div><small>Zona de atención</small><span>Irazola / Padre Abad / Ucayali</span><small>Atención remota a nivel nacional</small></div></div>
+            <div class="contact-item"><div class="ci"><img src="IMAGEN/pngwing.com (2).png"width="30"></div><div><small>Facebook</small><span>elimdurand <em style="color:#71849a"></em></span></div></div>
+            <div class="contact-item"><div class="ci"><img src="IMAGEN/pngwing.com (3).png" width="30" alt=""></div><div><small>Correo electrónico</small><span>elimdurand237@gmail.com</span></div></div>
+            <div class="contact-item"><div class="ci"><img src="IMAGEN/pngwing.com (4).png" width="30" alt=""></div><div><small>Horario</small><span>8.00 AM A 6.00 PM </span></div></div>
+          </div>
+        </div>
+        <div class="form-card">
+          <h3>Solicitar servicio</h3>
+          <p style="color:var(--muted);font-size:.88rem;margin:5px 0 20px">Completa el formulario y se abrirá WhatsApp con tu solicitud.</p>
+          <form id="contactForm">
+            <label>Nombre<input id="nombre" required placeholder="Tu nombre"></label>
+            <label>Servicio<select id="servicio">
+              <option>Mantenimiento de laptop/PC</option><option>Repotenciación y optimización</option>
+              <option>Formateo e instalación de Windows</option><option>Instalación de programas</option>
+              <option>Antivirus y seguridad</option><option>Asistencia técnica remota</option><option>Otro</option>
+            </select></label>
+            <label>Describe tu necesidad<textarea id="mensaje" required placeholder="Cuéntanos qué problema presenta tu equipo..."></textarea></label>
+            <button class="btn btn-primary" type="submit">Enviar solicitud por WhatsApp →</button>
+            <div class="form-note">Al enviar, se abrirá WhatsApp en una nueva ventana.</div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="container footer-inner">
+    <p>© <span id="year"></span> COMPU CENTER “D” — Tecnología y Servicios.</p>
+    <a class="back" href="#inicio">Volver arriba ↑</a>
+  </div>
+</footer>
+
+<a class="float-wa" href="https://wa.me/51940720188?text=Hola%20COMPU%20CENTER%20%E2%80%9CD%E2%80%9D%2C%20quiero%20solicitar%20soporte%20t%C3%A9cnico." target="_blank" aria-label="Contactar por WhatsApp">◉</a>
+
+<script>
+  document.getElementById('year').textContent = new Date().getFullYear();
+  document.getElementById('contactForm').addEventListener('submit', function(e){
+    e.preventDefault();
+    const nombre = document.getElementById('nombre').value.trim();
+    const servicio = document.getElementById('servicio').value;
+    const mensaje = document.getElementById('mensaje').value.trim();
+    const text = `Hola COMPU CENTER “D”.%0A%0ANombre: ${encodeURIComponent(nombre)}%0AServicio: ${encodeURIComponent(servicio)}%0ADetalle: ${encodeURIComponent(mensaje)}`;
+    window.open(`https://wa.me/51940720188?text=${text}`, '_blank');
+  });
+</script>
+</body>
+</html>
